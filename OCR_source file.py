@@ -4,7 +4,9 @@ import numpy as np
 import pytesseract
 import argparse
 import cv2
-
+# This function basically uses a deep learning based text detector in regions withing the image
+# The text detector gives probability of given area having text and also maps to the bounding box location in 
+# text containing region of the image.
 def decode_predictions(scores, geometry):
 	(numRows, numCols) = scores.shape[2:4]
 	rects = []
@@ -49,6 +51,8 @@ def decode_predictions(scores, geometry):
 	return (rects, confidences)
 
 # construct the argument parser and parse the arguments
+# all the necessary inputs will be taken from this block of code
+# the description given as a part of help tag will give you information about the input
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", type=str,
 	help="path to input image")
@@ -67,6 +71,7 @@ args = vars(ap.parse_args())
 # load the input image and grab the image dimensions
 image = cv2.imread(args["image"])
 orig = image.copy()
+#getting the dimensions of the image
 (origH, origW) = image.shape[:2]
 
 # set the new width and height and then determine the ratio in change
@@ -85,7 +90,7 @@ layerNames = [
 	"feature_fusion/concat_3"]
 
 # load the pre-trained EAST text detector
-print("loading EAST text detector...")
+print("EAST text detector...")
 net = cv2.dnn.readNet(args["east"])
 
 
