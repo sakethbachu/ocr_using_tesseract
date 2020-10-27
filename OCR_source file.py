@@ -1,5 +1,6 @@
 #With this code you can perform text detection and recognition using tesseract engine maintained by the Google
 #This is a 2 step process of extraction of ROI and performing recognition task on the extracted ROIs
+#Instead of tesseract engie you can aslo use the google vision api
 
 # import the necessary packages
 from imutils.object_detection import non_max_suppression
@@ -166,5 +167,6 @@ for ((startX, startY, endX, endY), text) in results:
 		cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255), 3)
 
 	# show the output image
+	#calling the imshow function
 	cv2.imshow("Text Detection", output)
 	cv2.waitKey(0)
