@@ -1,3 +1,6 @@
+#With this code you can perform text detection and recognition using tesseract engine maintained by the Google
+#This is a 2 step process of extraction of ROI and performing recognition task on the extracted ROIs
+
 # import the necessary packages
 from imutils.object_detection import non_max_suppression
 import numpy as np
